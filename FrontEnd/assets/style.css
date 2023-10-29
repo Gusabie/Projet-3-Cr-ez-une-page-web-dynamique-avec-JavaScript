@@ -197,31 +197,31 @@ li:hover {
 	width: 100%;
 
 }
-#contact, #login {
+#contact, #login, #ajout-photo {
 	width: 50%;
 margin: auto;
 }
-#contact > * , #login > * {
+#contact > * , #login > *, #ajout-photo > * {
 	text-align: center;
 
 }
 #contact h2, #login h2{
 	margin-bottom: 20px;
 }
-#contact form, #login form {
+#contact form, #login form, #ajout-photo form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
 	flex-direction: column;
 }
 
-#contact input, #login input {
+#contact input, #login input, #ajout-photo input, #ajout-photo select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-#contact label, #login label {
+#contact label, #login label, #ajout-photo label {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -290,27 +290,146 @@ span {
 	background: rgba(0, 0, 0, 0.20);
 }
 
-.modal {
-	width: 95%;
-	max-width: 500px;
-	min-width: 300px;
-	padding: 30px;
+.galmodal, .form-modal {
+	display: none;
+}
+
+.galmodal.active, .form-modal.active {
+	display: block;
+}
+
+.modal, .form-photo {
+	width: 100%;
+	max-width: 630px;
+	padding: 60px 0 0 0;
 	background: #FFFEF8;
+	border-radius: 10px;
 	position: absolute;
-	top: 40%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.form-modal{
+	display: none;
+}
+
+.modal h3, .form-modal h3 {
+	font-family: 'Work Sans';
+	font-size: 26px;
+}
+
+.modal input, .form-modal input[type="submit"] {
+	width: 237px;
+	height: 36px;
+	border: none;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.gallerymodale {
+	width: 70%;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-column-gap: 5px;
+	grid-row-gap: 8px;
+	margin-top: 50px;
+	padding-bottom: 5%;
+	border-bottom:solid 2px rgba(0, 0, 0, 0.15) ;
+}
+
+
+
+.gallerymodale img {
+	width: 100%;
+	max-width: 76.86px;
 }
 
 .close-modal {
+	width: 12px;
+	height: 12px;
 	padding: 8px 10px;
 	border: none;
 	border-radius: 5px;
 	font-size: 18px;
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 25px;
+	right: 20px;
 	cursor: pointer;
 	color: black;
 	background-color: transparent;
 }
+.return-modal {
+	width: 21px;
+	height: 21px;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 5px;
+	font-size: 18px;
+	position: absolute;
+	top: 25px;
+	left: 20px;
+	cursor: pointer;
+	color: black;
+	background-color: transparent;
+}
+
+
+.gallerymodale .delete-icon {
+	width: 9px;
+	height: 10.29px;
+	background-color: black;
+	background: black;
+	padding: 3.34px 4px;
+	border-radius: 2px;
+	position: relative;
+	bottom: 99px;
+	left: 54px;
+}
+
+#ajout-photo {
+	width: 70%;
+	margin-top: 50px;
+	padding-bottom: 5%;
+	border-bottom:solid 2px rgba(0, 0, 0, 0.15) ;
+	margin-left: 100px;
+}
+
+
+
+
+#ajout-photo label {
+	font-family: 'Work Sans';
+	font-weight: 500;
+	font-size: 14px;
+	color: #3d3d3d;
+	line-height: 16.42px;
+}
+
+#ajout-photo select, #ajout-photo input[type="text"] {
+	width: 100%;
+	background-color: transparent;
+	text-align: left;
+	font-size: 14px;
+	color: #444444;
+	font-family: 'Work Sans';
+	padding-right: 0;
+}
+
+#ajout-photo input[type="file"] {
+	width: 100%;
+	height: 169px;
+	background-color: #e8f1f6;
+	margin-bottom: 30px;
+	padding: 0;
+}
+
+#ajout-photo input {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
