@@ -1,3 +1,4 @@
+
 const UrlAPIworks = "http://localhost:5678/api/works/";
 
 const logo = document.querySelector("h1");
@@ -10,7 +11,7 @@ const works = await reponse.json(); // les informations récuperées sont stock�
 
 const works = await fetch(UrlAPIworks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
 
-function generergallery(works) {
+export function generergallery(works) {
   for (let i = 0; i < works.length; i++) {
     const item = works[i];
 
@@ -92,4 +93,4 @@ if (authToken) {
   });
 }
 
-
+console.log(works)

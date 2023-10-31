@@ -49,6 +49,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.projet {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
 .mode-edition a{
 	height: 59px;
 	background-color: black;
@@ -64,7 +70,7 @@ table {
 	font-family: 'Work Sans';
 }
 
-.mode-edition img {
+.mode-edition img, .modifier img {
 	width: 15.58px;
 	height: 15.58px;
 }
@@ -389,6 +395,7 @@ span {
 	position: relative;
 	bottom: 99px;
 	left: 54px;
+	cursor: pointer;
 }
 
 #ajout-photo {
@@ -433,3 +440,16 @@ span {
 	margin-bottom: 30px;
 }
 
+.valider-btn[disabled] {
+	background-color: #A7a7a7; /* Couleur de fond grise pour les boutons désactivés */
+	color: white; /* Couleur de texte grise pour les boutons désactivés */
+	cursor: not-allowed; /* Curseur non autorisé pour les boutons désactivés */
+	/* Autres styles de mise en forme pour les boutons désactivés */
+  }
+
+  .valider-btn[disabled]:hover {
+	background-color: #A7a7a7; /* Couleur de fond grise pour les boutons désactivés */
+	color: white; /* Couleur de texte grise pour les boutons désactivés */
+	cursor: not-allowed; /* Curseur non autorisé pour les boutons désactivés */
+	/* Autres styles de mise en forme pour les boutons désactivés */
+  }
