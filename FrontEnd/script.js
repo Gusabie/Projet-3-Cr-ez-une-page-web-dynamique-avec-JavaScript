@@ -39,6 +39,13 @@ export function generergallery(works) { // la fonction est exporté pour être u
 generergallery(works); //appele la fonction pour afficher la galerie
 
 //Boutons//
+function desactiveboutons() {
+  boutontous.classList.remove("active");
+  boutonobjets.classList.remove("active");
+  boutonappartements.classList.remove("active");
+  boutonhotels.classList.remove("active");
+}
+
 
 //Bouton afficher tous les travaux
 const boutontous = document.querySelector(".btn-tous");
@@ -46,6 +53,8 @@ const boutontous = document.querySelector(".btn-tous");
 boutontous.addEventListener("click", function () {
   document.querySelector(".gallery").innerHTML = "";
   generergallery(works);
+  desactiveboutons();
+  boutontous.classList.add("active");
 });
 
 // bouton filtre objets
@@ -57,6 +66,8 @@ boutonobjets.addEventListener("click", function () {
   });
   document.querySelector(".gallery").innerHTML = "";
   generergallery(worksFiltrees);
+  desactiveboutons();
+  boutonobjets.classList.add("active");
 });
 
 //Bonton filtre Appartements
@@ -68,6 +79,8 @@ boutonappartements.addEventListener("click", function () {
   });
   document.querySelector(".gallery").innerHTML = "";
   generergallery(worksFiltrees);
+  desactiveboutons();
+  boutonappartements.classList.add("active");
 });
 
 // Bouton filtre Hotel et restraurants
@@ -79,7 +92,11 @@ boutonhotels.addEventListener("click", function () {
   });
   document.querySelector(".gallery").innerHTML = "";
   generergallery(worksFiltrees);
+  desactiveboutons();
+  boutonhotels.classList.add("active");
 });
+
+
 
 // Vérifiez le localStorage pour le token d'authentification
 const authToken = localStorage.getItem("authToken"); //récuperer le token depuis le localstorage
