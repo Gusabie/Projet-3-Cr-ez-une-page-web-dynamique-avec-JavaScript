@@ -39,7 +39,7 @@ export function generergallery(works) { // la fonction est exporté pour être u
 generergallery(works); //appele la fonction pour afficher la galerie
 
 //Boutons//
-function desactiveboutons() {
+function desactiveboutons() {//fonction pour retirer la classe à tous les boutons
   boutontous.classList.remove("active");
   boutonobjets.classList.remove("active");
   boutonappartements.classList.remove("active");
@@ -50,11 +50,11 @@ function desactiveboutons() {
 //Bouton afficher tous les travaux
 const boutontous = document.querySelector(".btn-tous");
 
-boutontous.addEventListener("click", function () {
-  document.querySelector(".gallery").innerHTML = "";
-  generergallery(works);
-  desactiveboutons();
-  boutontous.classList.add("active");
+boutontous.addEventListener("click", function () { //ecoute l'evenement au clique sur le bouton "tous"
+  document.querySelector(".gallery").innerHTML = ""; //efface le contenu HTML de la galerie
+  generergallery(works); //appel à la fonction pour regenerer la galerie
+  desactiveboutons();//appel à la fonction pour désastivé la classe active des boutons
+  boutontous.classList.add("active");//ajoute la classe au bouton actif
 });
 
 // bouton filtre objets
@@ -65,7 +65,7 @@ boutonobjets.addEventListener("click", function () {
     return works.category.name === "Objets"; //si la catégorie est Objets
   });
   document.querySelector(".gallery").innerHTML = "";
-  generergallery(worksFiltrees);
+  generergallery(worksFiltrees); //
   desactiveboutons();
   boutonobjets.classList.add("active");
 });

@@ -464,7 +464,7 @@ input[type="file"] {
 	display: none;
   }
 
-  .Customfile {
+.Customfile {
 	display: inline-block;
 	padding: 6px 12px;
 	cursor: pointer;
@@ -474,7 +474,7 @@ input[type="file"] {
 	margin-bottom: 30px;
 	padding: 0;
 	border-radius: 3px;
-  }
+}
 
 
 #ajout-photo input {
@@ -521,9 +521,9 @@ input[type="file"] {
 #imagePreview {
 	display: none;
 	max-width: 420px; 
-	max-height: 169px;
+	max-height: 168px;
 	position: absolute;
-	top: 35%;
+	top: 37.4%;
 	left: 50%;
 	transform: translate(-50%, -50%); /* Recentre la div */
 }

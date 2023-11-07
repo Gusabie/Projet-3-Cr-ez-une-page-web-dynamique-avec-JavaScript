@@ -192,7 +192,7 @@ Ajoutphoto.innerHTML = `
 </div>
 <label class="Customfile">
 <input type="file" name="imageUrl" id="imageUrl" accept="image/*" required>
-</label
+</label>
 <img id="imagePreview" src="#" alt="Image Preview">
 <br>
 
@@ -204,6 +204,7 @@ Ajoutphoto.innerHTML = `
 <label for="Catégorie">Catégorie</label>
 <br>
 <select name="Categorie" id="Catégorie" required>
+<option value="" selected></option>
 </select>
 `
 Ajoutphotoform.appendChild(Ajoutphoto);
