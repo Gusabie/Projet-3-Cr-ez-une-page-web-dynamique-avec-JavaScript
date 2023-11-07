@@ -5,7 +5,6 @@ const UrlAPIcategory = "http://localhost:5678/api/categories" ; //variable conte
 const works = await fetch(UrlAPIworks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
 const authToken = localStorage.getItem("authToken"); //récuperer le token depuis le localstorage
 
-
 if (authToken) {
   //si connecté
 
@@ -25,7 +24,6 @@ if (authToken) {
   lienedition.appendChild(iconeedition); //placer l'image dans le lien
   lienedition.appendChild(textedition); // placer le texte dans le lien
 
-
   divedition.appendChild(lienedition); // placer le lien dans la div
 
   let body = document.querySelector(".div-edit"); //cibler la balise qui acceuillera les balises créees
@@ -34,7 +32,6 @@ if (authToken) {
   let filtres=document.querySelector(".filtre") //cibler les filtres
   filtres.style.display = "none"; //desactiver ses affichages
 
-
   const lienmodifier =document.createElement("a");
   const iconemodifier = document.createElement("img");
   const textmodifier = document.createElement("p");
@@ -42,8 +39,9 @@ if (authToken) {
   divmodifier.classList.add("modifier");
 
   lienmodifier.href = "#modal";
+  lienmodifier.classList.add("modifier")
   lienmodifier.classList.add("modal-trigger");
-  iconemodifier.src = "assets/icons/edition.png";
+  iconemodifier.src = "assets/icons/modifier.png";
   textmodifier.textContent = "modifier";
   lienmodifier.appendChild(iconemodifier);
   lienmodifier.appendChild(textmodifier);
@@ -125,7 +123,6 @@ function generergallerymodal(works) { //appel des informations de works
     const projet = event.target.parentElement; //event qui cible l'element parent de l'icone (la div qui contient l'image de la gallerie)
     const id = projet.dataset.id; // cible l'id de l'element parent de l'icone
   
-
         // Requête DELETE à l'API pour supprimer l'élément
         try {
           const response = await fetch(`http://localhost:5678/api/works/${id}`, { //cible les elements de l'api Works en fonction de leur ID
@@ -149,9 +146,6 @@ function generergallerymodal(works) { //appel des informations de works
         } catch (error) { //attrape l'erreur
           console.error("Une erreur s'est produite lors de la suppression de l'élément : ", error); //affiche l'erreur si le "try" echoue
         }
-
- 
-
 });
 }
 }
@@ -187,7 +181,19 @@ Ajoutphotoform.appendChild(titreformmodale);
 let Ajoutphoto = document.createElement("form"); //ajout du formulaire
 Ajoutphoto.id = "ajout-photo"
 Ajoutphoto.innerHTML = `
-<input type="file" name="imageUrl" id="imageUrl" required>
+
+<div class="AddImg">
+<img src="assets/icons/image.png" alt="logo image" class="logoimage">
+
+<label for=imageUrl> <span class="ajout"> + Ajouter photo</span> </label>
+
+<p><span class="textajout">jpg, png : 4mo max</span></p>
+
+</div>
+<label class="Customfile">
+<input type="file" name="imageUrl" id="imageUrl" accept="image/*" required>
+</label
+<img id="imagePreview" src="#" alt="Image Preview">
 <br>
 
 <label for="title">Titre</label>
@@ -347,3 +353,24 @@ valider.addEventListener("click", async function(e){//ecoute d'evenement au clic
         valider.setAttribute("disabled", true); // Désactivez le bouton
       }
     });
+
+
+//aperçu de l'image selectionné
+const inputImage = document.getElementById("imageUrl"); //selectionne l'input du fichier
+const imagePreview = document.getElementById("imagePreview"); //selectionne l'image ajouté
+const addImg = document.querySelector(".AddImg"); //selectionne la balise du fond de l'input
+
+inputImage.addEventListener("change", function () {
+  if (inputImage.files && inputImage.files[0]) {
+    const reader = new FileReader(); //creer un objet FileReader (l'image ajouté)
+    reader.onload = function (e) { //gerer l'evenement de chargement
+      imagePreview.src = e.target.result; //Defini la source de l'aperçu de l'image
+      imagePreview.style.display = "block"; //active l'affichage de l'image en changeant le display
+      addImg.classList.add("hide-addimg"); // cacher le fond de l'input
+    };
+    reader.readAsDataURL(inputImage.files[0]); //lit le fichier en tant que URL
+  } else {
+    addImg.classList.remove("hide-addimg");//reactive le fond de l'input
+    imagePreview.style.display = "none";//désactive l'aperçu de l'image
+  }
+});

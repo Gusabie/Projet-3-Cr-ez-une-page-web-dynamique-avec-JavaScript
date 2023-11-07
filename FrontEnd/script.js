@@ -11,9 +11,9 @@ const works = await reponse.json(); // les informations récuperées sont stock�
 
 const works = await fetch(UrlAPIworks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
 
-export function generergallery(works) {
-  for (let i = 0; i < works.length; i++) {
-    const item = works[i];
+export function generergallery(works) { // la fonction est exporté pour être utilisé dans un autre fichier Javascript
+  for (let i = 0; i < works.length; i++) { //pour chaque élément de works
+    const item = works[i]; //cible l'élément en fonction de i
 
     const galleryContainer = document.querySelector(".gallery");
     // Créez un conteneur pour chaque élément

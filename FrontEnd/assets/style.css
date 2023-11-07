@@ -384,6 +384,25 @@ span {
 	background-color: transparent;
 }
 
+.modifier {
+	display: flex;
+	gap: 5px;
+	position: relative;
+	top: 10px;
+	left: 5px;
+}
+.modifier a {
+	font-size: 14px;
+	text-decoration: none;
+	font-weight: 400;
+	font-family: 'Work Sans';
+}
+
+.modifier a:visited {
+color: black;
+}
+
+
 
 .gallerymodale .delete-icon {
 	width: 9px;
@@ -407,8 +426,6 @@ span {
 }
 
 
-
-
 #ajout-photo label {
 	font-family: 'Work Sans';
 	font-weight: 500;
@@ -427,19 +444,88 @@ span {
 	padding-right: 0;
 }
 
-#ajout-photo input[type="file"] {
+/* #ajout-photo input[type="file"] {
 	width: 100%;
 	height: 169px;
 	background-color: #e8f1f6;
 	margin-bottom: 30px;
 	padding: 0;
-}
+	font-size: 0px;
+	cursor: pointer;
+	border-radius: 3px;
+	z-index: 1;
+} */
+
+input[type="file"] {
+	display: none;
+  }
+
+  .Customfile {
+	display: inline-block;
+	padding: 6px 12px;
+	cursor: pointer;
+	width: 100%;
+	height: 169px;
+	background-color: #e8f1f6;
+	margin-bottom: 30px;
+	padding: 0;
+	border-radius: 3px;
+  }
+
 
 #ajout-photo input {
 	width: 100%;
 	margin-bottom: 30px;
 }
 
+
+.AddImg {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	position: absolute;
+	top: 37%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Recentre la div */
+	z-index: 0;
+	pointer-events: none;
+}
+.ajout {
+	border: #CBD6DC 2px solid;
+	color: #306685;
+	font-family: 'Work Sans';
+	text-align: center;
+	font-size: 14px;
+	border-radius: 50px;
+	padding: 5px 20px;
+	background: #CBD6DC;
+}
+.textajout{
+	font-family: 'Work Sans';
+	font-size: 10px;
+	font-weight: 400;
+	line-height: 12px;
+	letter-spacing: 0em;
+	text-align: center;
+	color: #444444;
+}
+.logoimage {
+	max-width: 68.14px;
+	margin: auto;
+}
+
+#imagePreview {
+	display: none;
+	max-width: 420px; 
+	max-height: 169px;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Recentre la div */
+}
+.hide-addimg {
+	display: none;
+  }
 .valider-btn[disabled] {
 	background-color: #A7a7a7; /* Couleur de fond grise pour les boutons désactivés */
 	color: white; /* Couleur de texte grise pour les boutons désactivés */
@@ -453,3 +539,4 @@ span {
 	cursor: not-allowed; /* Curseur non autorisé pour les boutons désactivés */
 	/* Autres styles de mise en forme pour les boutons désactivés */
   }
+
