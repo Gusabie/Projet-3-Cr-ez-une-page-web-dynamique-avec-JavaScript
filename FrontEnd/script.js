@@ -1,4 +1,3 @@
-
 const UrlAPIworks = "http://localhost:5678/api/works/";
 
 const logo = document.querySelector("h1");
@@ -11,8 +10,10 @@ const works = await reponse.json(); // les informations récuperées sont stock�
 
 const works = await fetch(UrlAPIworks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
 
-export function generergallery(works) { // la fonction est exporté pour être utilisé dans un autre fichier Javascript
-  for (let i = 0; i < works.length; i++) { //pour chaque élément de works
+export function generergallery(works) {
+  // la fonction est exporté pour être utilisé dans un autre fichier Javascript
+  for (let i = 0; i < works.length; i++) {
+    //pour chaque élément de works
     const item = works[i]; //cible l'élément en fonction de i
 
     const galleryContainer = document.querySelector(".gallery");
@@ -39,22 +40,23 @@ export function generergallery(works) { // la fonction est exporté pour être u
 generergallery(works); //appele la fonction pour afficher la galerie
 
 //Boutons//
-function desactiveboutons() {//fonction pour retirer la classe à tous les boutons
+function desactiveboutons() {
+  //fonction pour retirer la classe à tous les boutons
   boutontous.classList.remove("active");
   boutonobjets.classList.remove("active");
   boutonappartements.classList.remove("active");
   boutonhotels.classList.remove("active");
 }
 
-
 //Bouton afficher tous les travaux
 const boutontous = document.querySelector(".btn-tous");
 
-boutontous.addEventListener("click", function () { //ecoute l'evenement au clique sur le bouton "tous"
+boutontous.addEventListener("click", function () {
+  //ecoute l'evenement au clique sur le bouton "tous"
   document.querySelector(".gallery").innerHTML = ""; //efface le contenu HTML de la galerie
   generergallery(works); //appel à la fonction pour regenerer la galerie
-  desactiveboutons();//appel à la fonction pour désastivé la classe active des boutons
-  boutontous.classList.add("active");//ajoute la classe au bouton actif
+  desactiveboutons(); //appel à la fonction pour désastivé la classe active des boutons
+  boutontous.classList.add("active"); //ajoute la classe au bouton actif
 });
 
 // bouton filtre objets
@@ -96,8 +98,6 @@ boutonhotels.addEventListener("click", function () {
   boutonhotels.classList.add("active");
 });
 
-
-
 // Vérifiez le localStorage pour le token d'authentification
 const authToken = localStorage.getItem("authToken"); //récuperer le token depuis le localstorage
 const loginbouton = document.getElementById("loginbutton"); // permet d'interagir avec le bouton login
@@ -110,4 +110,4 @@ if (authToken) {
   });
 }
 
-console.log(works)
+console.log(works);
