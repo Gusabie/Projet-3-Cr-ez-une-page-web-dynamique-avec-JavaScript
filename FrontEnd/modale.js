@@ -1,8 +1,8 @@
-import { generergallery } from "/script.js";
+import { generateGallery } from "/script.js";
 //Ajout de la barre "Mode édition" en tête de page
-const UrlAPIworks = "http://localhost:5678/api/works/"; // variable contenant l'adresse de l'api
+const urlApiWorks = "http://localhost:5678/api/works/"; // variable contenant l'adresse de l'api
 const UrlAPIcategory = "http://localhost:5678/api/categories"; //variable contenant l'adresse de l'api des catégories
-const works = await fetch(UrlAPIworks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
+const works = await fetch(urlApiWorks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
 const authToken = localStorage.getItem("authToken"); //récuperer le token depuis le localstorage
 
 if (authToken) {
@@ -133,11 +133,11 @@ function generergallerymodal(works) {
           console.log(`Élément avec l'ID ${id} supprimé avec succès.`); //affiche le resultat dans la console si la requete réussit
           projet.remove(); // Supprimez l'élément de la galerie ciblé
 
-          const Updategallery = await fetch(UrlAPIworks).then((response) =>
+          const Updategallery = await fetch(urlApiWorks).then((response) =>
             response.json()
           ); //nouvelle requette pour mettre la gallerie à jour
           document.querySelector(".gallery").innerHTML = ""; //nettoie la galerie
-          generergallery(Updategallery); //regenere la gallerie avec les nouveaux elements
+          generateGallery(Updategallery); //regenere la gallerie avec les nouveaux elements
         } else {
           console.error(
             `Échec de la suppression de l'élément avec l'ID ${id}.`
@@ -186,28 +186,30 @@ Ajoutphoto.id = "ajout-photo";
 Ajoutphoto.innerHTML = `
 
 <div class="AddImg">
-<img src="assets/icons/image.png" alt="logo image" class="logoimage">
-
-<label for=imageUrl> <span class="ajout"> + Ajouter photo</span> </label>
-
-<p><span class="textajout">jpg, png : 4mo max</span></p>
-
+    <img src="assets/icons/image.png" alt="logo image" class="logoimage">
+    <label for=imageUrl> <span class="ajout"> + Ajouter photo</span> </label>
+    <p><span class="textajout">jpg, png : 4mo max</span></p>
 </div>
+
 <label class="Customfile">
-<input type="file" name="imageUrl" id="imageUrl" accept="image/*" required>
+    <input type="file" name="imageUrl" id="imageUrl" accept="image/*" required>
 </label>
+
 <img id="imagePreview" src="#" alt="Image Preview">
 <br>
 
 <label for="title">Titre</label>
+
 <br>
 <input type="text" name="title" id="title" required>
+
 <br>
 
 <label for="Catégorie">Catégorie</label>
 <br>
+
 <select name="Categorie" id="Catégorie" required>
-<option value="" selected></option>
+    <option value="" selected></option>
 </select>
 `;
 Ajoutphotoform.appendChild(Ajoutphoto);
@@ -310,7 +312,7 @@ valider.addEventListener("click", async function (e) {
   formData.append("category", categorie); //ajoute la valeur de categorie dans category
   //Envoyer les données vers l'API
   try {
-    const response = await fetch(UrlAPIworks, {
+    const response = await fetch(urlApiWorks, {
       method: "POST",
       body: formData,
       headers: {
@@ -322,13 +324,13 @@ valider.addEventListener("click", async function (e) {
       // Traitez la réponse de l'API
       alert("Données envoyées avec succès !");
 
-      const Updategallery = await fetch(UrlAPIworks).then((response) =>
+      const Updategallery = await fetch(urlApiWorks).then((response) =>
         response.json()
       ); //nouvelle requette pour mettre la gallerie à jour
       document.querySelector(".gallery").innerHTML = ""; //nettoie la galerie
-      generergallery(Updategallery); //regenere la gallerie avec les nouveaux elements
+      generateGallery(Updategallery); //regenere la gallerie avec les nouveaux elements
       toggleModal(); //ferme la modale
-      const Updategallerymodal = await fetch(UrlAPIworks).then((response) =>
+      const Updategallerymodal = await fetch(urlApiWorks).then((response) =>
         response.json()
       ); //nouvelle requette pour mettre la gallerie à jour
       document.querySelector(".gallerymodale").innerHTML = ""; //nettoie la galerie
