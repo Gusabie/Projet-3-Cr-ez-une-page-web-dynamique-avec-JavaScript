@@ -5,9 +5,6 @@ logo.addEventListener("click", function () {
   window.location.href = "index.html"; // redirige vers la page d'accueil
 });
 
-/* const reponse = await fetch(UrlAPIworks);//recuperer les informations de l'API
-const works = await reponse.json(); // les informations récuperées sont stockées dans un Json */
-
 const works = await fetch(UrlAPIworks).then((works) => works.json()); //Récupere les information de l'API/Works et les stocke dans un JSON
 
 export function generergallery(works) {
